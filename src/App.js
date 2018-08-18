@@ -1,48 +1,85 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import Dashboard from './containers/dashboard'
+import "./App.css"
 
-class App extends Component {
-  state = { toggle: true };
-  toggleToggle = () => this.setState({ toggle: !this.state.toggle });
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      greeting: "Hello",
+      menuClps: true,
+      menuState: "0"
+    }
+  }
+  menuHider = () => {
+    if (this.state.menuClps === true) {
+      this.setState({
+        menuState: "-295px",
+        menuClps: false
+      })
+    } else if (this.state.menuClps === false) {
+      this.setState({
+        menuState: 0,
+        menuClps: true
+      })
+    }
+  }
+
   render() {
-    const { toggle } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>
-            This app is built with <br />React ⚛️ + Parcel 📦!
-          </h1>
-          <img
-            src={logo}
-            onClick={this.toggleToggle}
-            className={'App-logo ' + (toggle && 'Logo-spin')}
-            alt="logo"
-          />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <A href="https://reactjs.org/">Learn React</A>
-          <A href="https://parceljs.org/getting_started.html">Learn Parcel</A>
-        </header>
+        <div className="header">
+          <button className="menu-expand" onClick={this.menuHider}>
+            menu
+          </button>
+        </div>
+        <div className="menu" style={{ left: this.state.menuState }}>
+          <div className="menu-logo">
+            <img src={require("./imgs/phlogo.svg")} alt="logo" />
+          </div>
+          <div className="nav">
+            <ul>
+              <li>
+                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                  <a>Home</a>
+                </div>
+              </li>
+              <li>
+                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                  <a>Workouts</a>
+                </div>
+              </li>
+              <li>
+                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                  <a>Recepies</a>
+                </div>
+              </li>
+              <li>
+                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                  <a>Blog</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="menu-text">
+            <h2> Im the title </h2>
+            <p> Here rest filler text</p>
+          </div>
+          <div className="account">
+            <ul>
+              <li>
+                <button>login</button>
+              </li>
+              <li>
+                <button>sign up</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="container" />
+        <Dashboard />
+        <div className="footer" />
       </div>
-    );
+    )
   }
 }
-
-function A(props) {
-  // you can use object spread because babel-preset-react-app is set up for you
-  const { href, children, ...rest } = props;
-  return (
-    <a
-      className="App-link"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...rest}
-    >
-      {children}
-    </a>
-  );
-}
-export default App;
