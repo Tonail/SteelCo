@@ -5,12 +5,10 @@ class Dashboard extends Component {
 
 render() {
 	return(
-		<div className="container">
 			<div className="dashboard-container">
 				<Carousel/>
 				
 			</div>
-		</div>
 		)
 	} 
 }

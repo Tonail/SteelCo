@@ -1,29 +1,29 @@
-import React, { Component } from "react"
-import Dashboard from './containers/dashboard'
-import "./App.css"
+import React, { Component } from "react";
+import Dashboard from "./containers/dashboard";
+import "./App.css";
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       greeting: "Hello",
       menuClps: true,
       menuState: "0"
-    }
+    };
   }
   menuHider = () => {
     if (this.state.menuClps === true) {
       this.setState({
         menuState: "-295px",
         menuClps: false
-      })
+      });
     } else if (this.state.menuClps === false) {
       this.setState({
         menuState: 0,
         menuClps: true
-      })
+      });
     }
-  }
+  };
 
   render() {
     return (
@@ -40,22 +40,46 @@ export default class App extends Component {
           <div className="nav">
             <ul>
               <li>
-                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                <div
+                  className={
+                    this.state.menuClps === true
+                      ? "nav-btn"
+                      : "nav-btn nav-btn-clps"
+                  }
+                >
                   <a>Home</a>
                 </div>
               </li>
               <li>
-                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                <div
+                  className={
+                    this.state.menuClps === true
+                      ? "nav-btn"
+                      : "nav-btn nav-btn-clps"
+                  }
+                >
                   <a>Workouts</a>
                 </div>
               </li>
               <li>
-                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                <div
+                  className={
+                    this.state.menuClps === true
+                      ? "nav-btn"
+                      : "nav-btn nav-btn-clps"
+                  }
+                >
                   <a>Recepies</a>
                 </div>
               </li>
               <li>
-                <div className={this.state.menuClps === true ? "nav-btn" : "nav-btn nav-btn-clps"}>
+                <div
+                  className={
+                    this.state.menuClps === true
+                      ? "nav-btn"
+                      : "nav-btn nav-btn-clps"
+                  }
+                >
                   <a>Blog</a>
                 </div>
               </li>
@@ -76,10 +100,11 @@ export default class App extends Component {
             </ul>
           </div>
         </div>
-        <div className="container" />
-        <Dashboard />
+        <div className="container">
+          <Dashboard />
+        </div>
         <div className="footer" />
       </div>
-    )
+    );
   }
 }
